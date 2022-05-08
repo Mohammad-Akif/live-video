@@ -13,6 +13,7 @@ export default function CamLive(props) {
 
 	const [isFullScreen, setIsFullScreen] = useState(false);
 	const [showHls, setShowHls] = useState(false);
+
 	const [allValues, setAllValues] = useState({
 		//Vod Player Config
 		width: '100%',
@@ -99,7 +100,7 @@ export default function CamLive(props) {
 			className={
 				isFullScreen
 					? 'w-full relative '
-					: 'w-full relative  sm:px-[23] lg:px-24 xl:px-28'
+					: 'w-full relative sm:px-[23] lg:px-24 xl:px-28'
 			}
 		>
 			{!showHls && (

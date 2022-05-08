@@ -46,12 +46,15 @@ export default function CamVod(props) {
 					'yyyy-mm-dd'
 				)
 			); //Set Selected Start
-			setAllValues((prevValues) => {
-				return { ...prevValues, url: response.clips };
-			});
-			setAllValues((prevValues) => {
-				return { ...prevValues, playing: true };
-			});
+
+			if (!allValues.url) {
+				setAllValues((prevValues) => {
+					return { ...prevValues, url: response.clips };
+				});
+				setAllValues((prevValues) => {
+					return { ...prevValues, playing: true };
+				});
+			}
 		}
 	}, [loadingStartClip]);
 
@@ -270,7 +273,7 @@ export default function CamVod(props) {
 							}
 						>
 							{!isReady && (
-								<div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transform">
+								<div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] transform z-50">
 									<div class="w-12 h-12 rounded-full animate-spin border-8 border-dashed border-purple-500 border-t-transparent" />
 								</div>
 							)}
@@ -279,7 +282,7 @@ export default function CamVod(props) {
 								<ReactPlayer
 									width="100%"
 									height="100%"
-									ref={(video) => (videoRef.current = video)}
+									ref={videoRef}
 									playsinline={true}
 									playing={allValues.playing}
 									// url={selectedDay === null ? watch.hls+'.m3u8' : vidSrcArr}
@@ -294,11 +297,14 @@ export default function CamVod(props) {
 									muted={allValues.muted}
 									onBuffer={() => {
 										console.log('Buffering');
+										setIsReady(false);
 									}}
 									onBufferEnd={() => {
+										setIsReady(true);
 										console.log('Buffering Ended');
 									}}
 									onError={(e) => {
+										setIsReady(true);
 										console.log('error', e);
 									}}
 									onProgress={handleProgress}
