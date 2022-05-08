@@ -103,7 +103,7 @@ export default function CamVodView(props) {
 				{/* 1 - Camera Live Player/Controls */}
 				{showLive && (
 					<div className="flex flex-row justify-center items-center bg-black">
-						<div className="max-w-full sm:max-w-[768px] lg:max-w-[1000px] xl:max-w-[1100px]  items-start flex justify-start">
+						<div className="max-w-full w-screen sm:max-w-[768px] lg:max-w-[1000px] xl:max-w-[1100px]  items-start flex justify-start">
 							<CamLive
 								camera={camera}
 								// calendarBoundEnd={calendarBoundEnd}
@@ -116,7 +116,7 @@ export default function CamVodView(props) {
 				)}
 
 				{/* 2 -  Time , Clip-Length Switch, Live View Toggle */}
-				<div className="md:min-w-[1000px] bg-gray-600 flex flex-row justify-between items-center text-white px-6 self-center">
+				<div className="md:min-w-[1000px] p-5 bg-gray-600 flex flex-row justify-between items-center text-white px-6 self-center">
 					<div className="order-1 flex flex-row items-center">
 						<div className="flex flex-col justify-start items-start">
 							<div>

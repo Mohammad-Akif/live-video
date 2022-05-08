@@ -182,7 +182,7 @@ export default function CamVodDvr(props) {
 			});
 		}
 	}, [resData]);
-	console.log(selectedStartDay);
+	// console.log(selectedStartDay);
 	return (
 		<div className="py-2 flex flex-col items-center justify-start  bg-white w-full">
 			<span
